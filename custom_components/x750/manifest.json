@@ -1,10 +1,10 @@
 {
-  "domain": "x750",
-  "name": "Geekworm X750 UPS Power Sensor",
-  "version": "1.0.2",
-  "documentation": "https://raspberrypiwiki.com/X750",
+  "domain": "x1202",
+  "name": "Geekworm X1202 UPS Power Sensor",
+  "version": "0.5.0",
+  "documentation": "https://github.com/kelddamsbo/rpi_geekworm_x1202",
   "dependencies": [],
-  "codeowners": ["https://github.com/dincojazz"],
+  "codeowners": ["https://github.com/kelddamsbo"],
   "requirements": [
     "i2csense==0.0.4",
     "smbus-cffi==0.5.1"
