@@ -124,7 +124,7 @@ class X1202Sensor(Entity):
         """Initialize the sensor."""
         self.client_name = name
         self._name = SENSOR_TYPES[sensor_type][0]
-        self.X750_client = X1202_client
+        self.X1202_client = X1202_client
         self.temp_unit = temp_unit
         self.type = sensor_type
         self._state = None
