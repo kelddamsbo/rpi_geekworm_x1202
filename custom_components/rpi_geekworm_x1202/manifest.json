@@ -1,10 +1,13 @@
 {
-  "domain": "x1202",
+  "domain": "rpi_geekworm_x1202",
   "name": "Geekworm X1202 UPS Power Sensor",
   "version": "0.5.0",
   "documentation": "https://github.com/kelddamsbo/rpi_geekworm_x1202",
+  "issue_tracker": "https://github.com/kelddamsbo/rpi_geekworm_x1202/issues",
+  "integration_type": "device",
   "dependencies": [],
-  "codeowners": ["kelddamsbo"],
+  "codeowners": ["@kelddamsbo"],
+  "iot_class": "local_polling",
   "requirements": [
     "i2csense==0.0.4",
     "smbus-cffi==0.5.1"
