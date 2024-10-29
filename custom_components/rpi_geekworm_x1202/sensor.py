@@ -16,7 +16,7 @@ _LOGGER = logging.getLogger(__name__)
 CONF_I2C_ADDRESS = 'i2c_address'
 CONF_I2C_BUS = 'i2c_bus'
 
-DEFAULT_NAME = 'X750 Sensor'
+DEFAULT_NAME = 'X1202 Sensor'
 DEFAULT_I2C_ADDRESS = 0x36
 DEFAULT_I2C_BUS = 1
 
@@ -46,10 +46,10 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 async def async_setup_platform(
     hass, config, async_add_entities, discovery_info=None
 ):
-    """Set up the X750 sensor."""
+    """Set up the X1202 sensor."""
     name = config.get(CONF_NAME)
 
-    sensor_handler = await hass.async_add_executor_job(_setup_X750, config)
+    sensor_handler = await hass.async_add_executor_job(_setup_X1202, config)
     if sensor_handler is None:
         return
 
@@ -66,31 +66,31 @@ async def async_setup_platform(
 
 
 def _setup_X750(config):
-    """Set up and configure the X750 sensor."""
+    """Set up and configure the X1202 sensor."""
     from smbus import SMBus
 
     sensor_handler = None
     try:
         i2c_address = config.get(CONF_I2C_ADDRESS)
         bus = SMBus(config.get(CONF_I2C_BUS))
-        sensor = X750(i2c_address, bus)
+        sensor = X1202(i2c_address, bus)
 
     except (RuntimeError, IOError):
-        _LOGGER.error('X750 sensor not detected at 0x%02x', i2c_address)
+        _LOGGER.error('X1202 sensor not detected at 0x%02x', i2c_address)
         return None
 
     sensor_handler = X750Handler(sensor)
 
     sleep(0.5)  # Wait for device to stabilize
     if not sensor_handler.sensor_data.voltage:
-        _LOGGER.error('X750 sensor failed to Initialize')
+        _LOGGER.error('X1202 sensor failed to Initialize')
         return None
 
     return sensor_handler
 
 
 class X750Handler:
-    """X750 sensor working in i2C bus."""
+    """X1202 sensor working in i2C bus."""
 
     class SensorData:
         """Sensor data representation."""
@@ -102,7 +102,7 @@ class X750Handler:
 
     def __init__(self, sensor):
         """Initialize the sensor handler."""
-        self.sensor_data = X750Handler.SensorData()
+        self.sensor_data = X1202Handler.SensorData()
         self._sensor = sensor
 
         self.update(first_read=True)
@@ -120,11 +120,11 @@ class X750Handler:
 class X750Sensor(Entity):
     """Implementation of the X750 sensor."""
 
-    def __init__(self, X750_client, sensor_type, temp_unit, name):
+    def __init__(self, X1202_client, sensor_type, temp_unit, name):
         """Initialize the sensor."""
         self.client_name = name
         self._name = SENSOR_TYPES[sensor_type][0]
-        self.X750_client = X750_client
+        self.X750_client = X1202_client
         self.temp_unit = temp_unit
         self.type = sensor_type
         self._state = None
@@ -162,16 +162,16 @@ class X750Sensor(Entity):
         return self._unit_of_measurement
 
     async def async_update(self):
-        """Get the latest data from the X750 and update the states."""
-        await self.hass.async_add_executor_job(self.X750_client.update)
+        """Get the latest data from the X1202 and update the states."""
+        await self.hass.async_add_executor_job(self.X1202_client.update)
         if self.type == SENSOR_VOLTAGE:
-            self._state = round(self.X750_client.sensor_data.voltage, 1)
+            self._state = round(self.X1202_client.sensor_data.voltage, 1)
         elif self.type == SENSOR_CAPACITY:
-            self._state = round(self.X750_client.sensor_data.capacity, 1)
+            self._state = round(self.X1202_client.sensor_data.capacity, 1)
 
 
 class FieldData:
-    """Structure for storing X750 sensor data."""
+    """Structure for storing X1202 sensor data."""
 
     def __init__(self):
         self.status = None
@@ -179,16 +179,16 @@ class FieldData:
         self.capacity = None
 
 
-class X750Data:
-    """Structure to represent X750 device."""
+class X1202Data:
+    """Structure to represent X1202 device."""
 
     def __init__(self):
         self.data = FieldData()
 
 
-class X750(X750Data):
+class X1202(X1202Data):
     def __init__(self, i2c_addr=DEFAULT_I2C_ADDRESS, i2c_device=None):
-        X750Data.__init__(self)
+        X1202Data.__init__(self)
 
         self.i2c_addr = i2c_addr
         self._i2c = i2c_device
