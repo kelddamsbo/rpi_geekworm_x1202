@@ -1,16 +1,11 @@
 # Geekworm x750 UPS
-Home Assistant Geekworm x750 Addon based on Home Assistant Geekworm x720 Addon from user Beduir https://github.com/Beduir/x720.git
-
-Change fixes:
-   - 20240411:
-     Fixed deprecated async_add_job with async_add_executor_job
+Home Assistant Geekworm x1202 HACS Addon based on Home Assistant Geekworm x720 Addon from user Beduir https://github.com/Beduir/x720.git
 
 Сompatibility:
-   - Geekworm x750
-   - Geekworm x720
+   - Geekworm x1202
 
 configuration.yaml:
 
 	sensor:
-  	  - platform: x750
+  	  - platform: x1202
 	    name: 'RPi Battery'
