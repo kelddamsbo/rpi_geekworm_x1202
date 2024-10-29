@@ -56,7 +56,7 @@ async def async_setup_platform(
     dev = []
     for variable in config[CONF_MONITORED_CONDITIONS]:
         dev.append(
-            X750Sensor(
+            X1202Sensor(
                 sensor_handler, variable, SENSOR_TYPES[variable][1], name
             )
         )
@@ -65,7 +65,7 @@ async def async_setup_platform(
     return
 
 
-def _setup_X750(config):
+def _setup_X1202(config):
     """Set up and configure the X1202 sensor."""
     from smbus import SMBus
 
@@ -79,7 +79,7 @@ def _setup_X750(config):
         _LOGGER.error('X1202 sensor not detected at 0x%02x', i2c_address)
         return None
 
-    sensor_handler = X750Handler(sensor)
+    sensor_handler = X1202Handler(sensor)
 
     sleep(0.5)  # Wait for device to stabilize
     if not sensor_handler.sensor_data.voltage:
@@ -89,7 +89,7 @@ def _setup_X750(config):
     return sensor_handler
 
 
-class X750Handler:
+class X1202Handler:
     """X1202 sensor working in i2C bus."""
 
     class SensorData:
@@ -117,8 +117,8 @@ class X750Handler:
             self.sensor_data.capacity = self._sensor.data.capacity
 
 
-class X750Sensor(Entity):
-    """Implementation of the X750 sensor."""
+class X1202Sensor(Entity):
+    """Implementation of the X1202 sensor."""
 
     def __init__(self, X1202_client, sensor_type, temp_unit, name):
         """Initialize the sensor."""
