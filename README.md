@@ -8,10 +8,8 @@ https://geekworm.com/products/x1202
 
 
 configuration.yaml:
+![pic2](https://github.com/user-attachments/assets/61e2b56a-7d27-4a85-8bcc-9697a43ac771)
 
-sensor:
-   - platform: x1202
-   name: 'RPi Battery'
 
 Card in home assistant :
 
