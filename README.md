@@ -2,7 +2,10 @@
 Home Assistant Geekworm x1202 HACS Addon based on Home Assistant Geekworm x720 Addon from user Beduir https://github.com/Beduir/x720.git and Home Assistant Geekworm x750 Addon from user dincojazz https://github.com/dincojazz/Geekworm_x750
 
 Сompatibility:
-   - Geekworm x1202 UPS
+https://geekworm.com/products/x1202
+
+![pic1](https://github.com/user-attachments/assets/33c2b31a-afe6-4330-92fe-7b1a4b3a384c)
+
 
 configuration.yaml:
 
