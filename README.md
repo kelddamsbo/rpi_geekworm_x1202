@@ -3,18 +3,17 @@ Home Assistant Geekworm x1202 HACS Addon based on Home Assistant Geekworm x720 A
 
 Сompatibility:
 https://geekworm.com/products/x1202
-
-![pic1](https://github.com/user-attachments/assets/33c2b31a-afe6-4330-92fe-7b1a4b3a384c)
+![pic1](https://github.com/user-attachments/assets/30cd1f97-05b1-4365-a8d5-f764128c8fd4)
 
 configuration.yaml:
-![pic2](https://github.com/user-attachments/assets/61e2b56a-7d27-4a85-8bcc-9697a43ac771)
+![pic2](https://github.com/user-attachments/assets/f7c1c614-a118-4cbc-af91-d5c242b26510)
 
 2 binary sensors come from HACS addon https://github.com/thecode/ha-rpi_gpio
 And in configuration.yaml:
-![pic3](https://github.com/user-attachments/assets/d5ca3160-670d-40d2-8e0d-a73339b700c1)
+![pic3](https://github.com/user-attachments/assets/9231c3f4-a3c2-4467-90bd-d999d43b13b3)
 
 Card in home assistant :
-![pic4](https://github.com/user-attachments/assets/2eee7a27-2f63-404e-884c-01fd58387782)
+![pic4](https://github.com/user-attachments/assets/a3adfc59-c5c1-439d-ae10-cf32a774f0b7)
 
 And result:
-![pic5](https://github.com/user-attachments/assets/f5c71ff5-9ba9-4cca-b923-6aac0b56eafa)
+![pic5](https://github.com/user-attachments/assets/f5c77b9a-04e6-44d2-a046-46dfc59aee8b)
