@@ -6,33 +6,15 @@ https://geekworm.com/products/x1202
 
 ![pic1](https://github.com/user-attachments/assets/33c2b31a-afe6-4330-92fe-7b1a4b3a384c)
 
-
 configuration.yaml:
 ![pic2](https://github.com/user-attachments/assets/61e2b56a-7d27-4a85-8bcc-9697a43ac771)
 
+2 binary sensors come from HACS addon https://github.com/thecode/ha-rpi_gpio
+And in configuration.yaml:
+![pic3](https://github.com/user-attachments/assets/d5ca3160-670d-40d2-8e0d-a73339b700c1)
 
 Card in home assistant :
+![pic4](https://github.com/user-attachments/assets/2eee7a27-2f63-404e-884c-01fd58387782)
 
-type: entities
-entities:
-   - entity: sensor.rpi_battery_voltage
-   - entity: sensor.rpi_battery_capacity
-   - entity: binary_sensor.ups_status
-   - entity: binary_sensor.ups_charging
-   - entity: update.geekworm_x1202_ups_for_raspberry_pi_update
-title: Geekworm X1202 UPS
-
-The 2 binary sensors come from HACS addon https://github.com/thecode/ha-rpi_gpio
-And in configuration.yaml:
-
-binary_sensor:
-   - platform: gpio
-      sensors:
-      - port: 6
-      name: "UPS Status"
-      unique_id: "gpio_sensor_port_6"
-      invert_logic: true
-      - port: 16
-      name: "UPS Charging"
-      unique_id: "gpio_sensor_port_16"
-      invert_logic: true
+And result:
+![pic5](https://github.com/user-attachments/assets/f5c71ff5-9ba9-4cca-b923-6aac0b56eafa)
