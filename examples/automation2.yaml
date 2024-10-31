@@ -1,0 +1,25 @@
+alias: Geekworm UPS On Charge Critical
+description: Send notification & gracefully shutdown host
+triggers:
+  - entity_id:
+      - sensor.rpi_battery_capacity
+    below: 25
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 20
+    trigger: numeric_state
+conditions: []
+actions:
+  - metadata: {}
+    data:
+      message: Batteriniveau kritisk. Lukker ned.
+      title: 🔌 *Geekworm UPS*
+    action: notify.mobile_app_sm_a528b
+  - event: set_shutdown_reason
+    event_data:
+      reason: ups_charge_critical
+  - data: {}
+    enabled: true
+    action: hassio.host_shutdown
+mode: single
