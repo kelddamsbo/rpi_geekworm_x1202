@@ -21,3 +21,5 @@ Card in home assistant :
 And result:
 
 ![pic5](https://github.com/user-attachments/assets/f5c77b9a-04e6-44d2-a046-46dfc59aee8b)
+
+For automations, please look in folder examples
