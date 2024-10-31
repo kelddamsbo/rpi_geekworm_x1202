@@ -1,0 +1,39 @@
+alias: Geekworm UPS On Power Loss - Restored
+description: Send notification on power loss
+triggers:
+  - entity_id:
+      - binary_sensor.ups_status
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+    trigger: state
+  - entity_id:
+      - binary_sensor.ups_status
+    from: "off"
+    to: "on"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+    trigger: state
+actions:
+  - if:
+      - condition: state
+        entity_id: binary_sensor.ups_status
+        state: "on"
+    then:
+      - metadata: {}
+        data:
+          message: Strømudfald dedekteret
+          title: 🔌 *Geekworm UPS*
+        action: notify.mobile_app_sm_a528b
+    else:
+      - metadata: {}
+        data:
+          message: Strømmen er tilbage
+          title: 🔌 *Geekworm UPS*
+        action: notify.mobile_app_sm_a528b
+mode: single
